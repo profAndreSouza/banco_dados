@@ -4,6 +4,8 @@
 
 ```sql
 
+CREATE DATABASE futebol;
+
 CREATE TABLE estadio (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL, 
@@ -33,7 +35,7 @@ CREATE TABLE partida (
     golsVisitante INTEGER NOT NULL,
     FOREIGN KEY (timeCasaId) REFERENCES time(id) ON DELETE CASCADE,
     FOREIGN KEY (timeVisitanteId) REFERENCES time(id) ON DELETE CASCADE,
-    FOREIGN KEY (estadioId) REFERENCES estadio(id) ON DELETE CASCADE,
+    FOREIGN KEY (estadioId) REFERENCES estadio(id) ON DELETE CASCADE
 );
 
 ```
