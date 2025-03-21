@@ -22,25 +22,42 @@ ORDER BY colunas
 LIMIT linhas
 ```
 
-## Simples
+## SELECT Simples
+Usado para recuperar colunas específicas ou todas as colunas de uma tabela.
 
-Selecionar todas as colunas
 ```sql
 SELECT * from jogador;
-```
 
-Selecionar colunas específicas
-```sql
 SELECT nome from jogador;
 ```
 
-## Alias
-Renomear determinada coluna
+## SELECT com ALIAS
+Permite renomear colunas ou tabelas para facilitar a leitura dos resultados.
+
 ```sql
 SELECT nome AS Nome_do_Jogador FROM jogador;
 ```
 
-## Where
+## SELECT com WHERE (Filtrando Dados)
+Usado para filtrar registros com base em uma condição.
+
+- Pedro% => Começa com Pedro
+- %Pedro => Termina com Pedro
+- %Pedro% => Contém Pedro
+
 ```sql
-SELECT nome AS Nome_do_Jogador FROM jogador;
+SELECT nome FROM jogador WHERE timeId = 1 ;
+
+SELECT * from jogador WHERE nome LIKE '%Pedro%';
 ```
+
+## SELECT com AND, OR e NOT
+Permite criar filtros mais complexos.
+
+```sql
+SELECT * FROM jogador WHERE timeId = 1 AND nome LIKE 'Pedro%';
+
+SELECT * FROM jogador WHERE timeId = 1 OR timeId = 2;
+
+SELECT * FROM jogador WHERE NOT timeId = 3;
+``` 
