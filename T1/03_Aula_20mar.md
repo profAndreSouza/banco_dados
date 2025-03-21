@@ -128,3 +128,26 @@ SELECT jogador.nome, time.nome AS time_nome
 FROM jogador
 FULL OUTER JOIN time ON jogador.timeId = time.id;
 ```
+
+
+
+```sql
+
+
+SELECT 
+    partida.id AS Jogo_ID,
+    data,
+    casa.nome AS Time_Casa,
+    visitante.nome AS Time_Visitante,
+    GolsCasa,
+    GolsVisitante,
+    estadio.nome AS Estadio,
+    Cidade,
+    casa.tecnico AS Tecnico_Time_Casa,
+    visitante.tecnico AS Tecnico_Time_Visitante
+FROM partida
+INNER JOIN estadio ON partida.estadioId = estadio.id
+INNER JOIN time casa ON partida.timeCasaId = casa.id
+INNER JOIN time visitante ON partida.timeVisitanteId = visitante.id;
+
+```
