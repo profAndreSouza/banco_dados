@@ -60,4 +60,31 @@ SELECT * FROM jogador WHERE timeId = 1 AND nome LIKE 'Pedro%';
 SELECT * FROM jogador WHERE timeId = 1 OR timeId = 2;
 
 SELECT * FROM jogador WHERE NOT timeId = 3;
-``` 
+```
+
+## SELECT com ORDER BY (Ordenação)
+Ordena os resultados em ordem crescente (ASC) ou decrescente (DESC).
+```sql
+
+SELECT * FROM time ORDER BY nome ASC;
+
+SELECT * FROM time ORDER BY nome DESC;
+
+```
+
+## SELECT com LIMIT e OFFSET (Paginação)
+Usado para limitar o número de resultados e pular registros.
+```sql
+
+SELECT * FROM jogador LIMIT 5;
+
+SELECT * FROM jogador LIMIT 5 OFFSET 5;
+
+```
+
+## SELECT com DISTINCT (Remover Duplicatas)
+Elimina valores duplicados de uma coluna.
+
+```sql
+SELECT DISTINCT timeId FROM jogador;
+```
