@@ -88,3 +88,43 @@ Elimina valores duplicados de uma coluna.
 ```sql
 SELECT DISTINCT timeId FROM jogador;
 ```
+
+## SELECT com GROUP BY e HAVING (Agrupamento)
+Usado para agrupar registros e aplicar funções de agregação.
+```sql
+SELECT timeId, COUNT(timeId) AS total_jogadores FROM jogador GROUP BY timeId;
+
+SELECT timeId, COUNT(timeId) AS total_jogadores FROM jogador 
+   GROUP BY timeId HAVING COUNT(timeId) > 5;
+```
+
+## SELECT com JOIN (Unindo Tabelas)
+Usado para recuperar dados de múltiplas tabelas.
+
+### INNER JOIN (Apenas correspondências)
+```sql
+SELECT jogador.nome, time.nome AS time_nome
+FROM jogador
+INNER JOIN time ON jogador.timeId = time.id;
+```
+
+### LEFT JOIN (Tudo da tabela da esquerda + correspondências)
+```sql
+SELECT jogador.nome, time.nome AS time_nome
+FROM jogador
+LEFT JOIN time ON jogador.timeId = time.id;
+```
+
+### RIGHT JOIN (Tudo da tabela da direita + correspondências)
+```sql
+SELECT jogador.nome, time.nome AS time_nome
+FROM jogador
+RIGHT JOIN time ON jogador.timeId = time.id;
+```
+
+### FULL OUTER JOIN (Todos os registros de ambas as tabelas) 
+```sql
+SELECT jogador.nome, time.nome AS time_nome
+FROM jogador
+FULL OUTER JOIN time ON jogador.timeId = time.id;
+```
