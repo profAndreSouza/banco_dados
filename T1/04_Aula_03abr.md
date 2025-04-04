@@ -1,3 +1,42 @@
+**Projeto Integrador: Estação Separadora de Materiais para Reciclagem**  
+
+## Contexto
+
+Uma estação separadora de materiais para reciclagem foi projetada para classificar e direcionar peças de diferentes materiais para seus respectivos destinos. O sistema conta com uma esteira transportadora, sensores para detecção dos materiais e atuadores para separação das peças.  
+
+### **Componentes do Sistema:**  
+
+1. **Esteira Transportadora:**  
+   - Responsável por movimentar as peças ao longo da estação de separação.  
+
+2. **Sensores:**  
+   - **Sensor Indutivo:** Detecta se a peça é metálica.  
+   - **Sensor Capacitivo:** Confirma a presença da peça na esteira.  
+   - **Sensor Ótico:** Identifica peças grandes, independentemente do material, para descarte ou refugo.  
+
+3. **Atuadores:**  
+   - Mecanismos para direcionar as peças para três rampas distintas:  
+     - **Rampa de Metal:** Para peças metálicas identificadas pelo sensor indutivo.  
+     - **Rampa de Plástico:** Para peças não metálicas, considerando a presença confirmada pelo sensor capacitivo.  
+     - **Rampa de Refugo:** Para peças grandes detectadas pelo sensor ótico, independentemente do material.  
+
+### **Funcionamento do Sistema:**  
+1. A peça entra na esteira e é detectada pelo sensor capacitivo.  
+2. O sensor indutivo verifica se a peça é metálica.  
+   - Se for metálica, a peça será direcionada para a rampa de metal.  
+   - Se não for metálica, segue para a próxima verificação.  
+3. O sensor ótico avalia se a peça é grande.  
+   - Se for grande, será enviada para a rampa de refugo.  
+   - Se não for grande e não for metálica, será direcionada para a rampa de plástico.  
+
+O sistema garante uma separação eficiente e automatizada de materiais para reciclagem, otimizando o processo de reaproveitamento dos resíduos.
+
+## DER
+<img src="der.png" alt="DER Exemplo" />
+
+## DDL
+
+```sql
 
 CREATE TABLE estacao (
     id_estacao SERIAL PRIMARY KEY,
@@ -39,4 +78,4 @@ CREATE TABLE deteccao_sensor (
     timestamp_deteccao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-
+```
