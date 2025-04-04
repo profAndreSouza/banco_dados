@@ -68,7 +68,7 @@ CREATE TABLE sensor (
     id_sensor SERIAL PRIMARY KEY,
     tipo_sensor VARCHAR(50),
     id_estacao INT REFERENCES estacao(id_estacao),
-    descricao VARCHAR(255);
+    descricao VARCHAR(255)
 );
 
 
@@ -79,3 +79,15 @@ CREATE TABLE deteccao_sensor (
 );
 
 ```
+
+
+
+## Exercícios
+
+Gere o DQL que responda as perguntas abaixo:
+
+- Histórico de funcionamento da estação: Verificar quando a estação esteve em funcionamento e os ciclos processados nesse período.
+- Peças processadas por estação: Mostrar todas as peças e verificar se foram processadas por alguma estação.
+- Sensores que Não Detectaram Nenhuma Peça
+- Peças com Última Detecção
+- Resumo de Processamento por Estação e Sensores
