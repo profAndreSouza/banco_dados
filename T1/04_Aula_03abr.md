@@ -87,6 +87,16 @@ CREATE TABLE deteccao_sensor (
 Gere o DQL que responda as perguntas abaixo:
 
 - Histórico de funcionamento da estação: Verificar quando a estação esteve em funcionamento e os ciclos processados nesse período.
+```sql
+
+SELECT estacao.nome, estacao_estado.timestamp_estado, ciclo.tempo_inicial, ciclo_tempo_final
+FROM estacao
+INNER JOIN estacao_estado ON estacao.id_estacao = estacao_estado.id_estacao
+INNER JOIN ciclo ON estacao.id_estacao = ciclo.id_estacao
+WHERE estacao_estado.em_funcionamento = TRUE 
+AND estacao_estado.timestamp_estado BETWEEN ciclo.tempo_inicial AND ciclo_tempo_final
+
+```
 - Peças processadas por estação: Mostrar todas as peças e verificar se foram processadas por alguma estação.
 - Sensores que Não Detectaram Nenhuma Peça
 - Peças com Última Detecção

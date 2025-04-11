@@ -25,5 +25,15 @@ services:
     depends_on:
       - postgres
 
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    container_name: cloudbeaver
+    ports:
+      - "8978:8978"
+    volumes:
+      - cloudbeaver-data:/opt/cloudbeaver/workspace
+    restart: always
+
 volumes:
+  cloudbeaver-data:
   postgres_data:
