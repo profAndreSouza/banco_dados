@@ -32,7 +32,7 @@ Uma estação separadora de materiais para reciclagem foi projetada para classif
 O sistema garante uma separação eficiente e automatizada de materiais para reciclagem, otimizando o processo de reaproveitamento dos resíduos.
 
 ## DER
-<img src="der.png" alt="DER Exemplo" />
+![Diagrama ER](06.Aula_17abr.png)
 
 ## DDL
 
