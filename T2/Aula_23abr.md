@@ -17,35 +17,35 @@ ORDER BY [campos]
 
 ## Exercícios
 
-### **Consultas Básicas (5)**
+### Consultas Básicas (5)
 
-1. **Listar todos os clientes pessoa física com seus nomes e CPFs.**
-2. **Exibir o nome fantasia e CNPJ de todas as pessoas jurídicas cadastradas.**
-3. **Listar todos os emails cadastrados no sistema.**
-4. **Exibir todos os endereços do tipo "Residencial", mostrando logradouro, número e cidade.**
-5. **Listar todos os números de telefone do tipo "Movel".**
-
-
-###  **Consultas Intermediárias (5)**
-
-6. **Listar o nome e CPF de todas as pessoas físicas ativas.**
-7. **Listar o nome fantasia e a quantidade de telefones cadastrados por pessoa jurídica.**
-8. **Exibir o nome (PF ou PJ), o tipo de cliente e a cidade de todos os clientes que possuem endereço.**
-9. **Exibir o nome e email de todas as pessoas físicas que possuem mais de um email cadastrado.**
-10. **Listar todos os clientes (PF e PJ) que não possuem nenhum telefone cadastrado.**
+1. Listar todos os clientes pessoa física com seus nomes e CPFs.
+2. Exibir o nome fantasia e CNPJ de todas as pessoas jurídicas cadastradas.
+3. Listar todos os emails cadastrados no sistema.
+4. Exibir todos os endereços do tipo "Residencial", mostrando logradouro, número e cidade.
+5. Listar todos os números de telefone do tipo "Movel".
 
 
-###  **Consultas Avançadas (5)**
+###  Consultas Intermediárias (5)
 
-11. **Listar o nome (PF ou PJ) de todos os clientes que possuem **pelo menos dois telefones** e **pelo menos um email**.**
-12. **Listar os nomes e cidades dos clientes (PF ou PJ) que têm **endereços tanto residenciais quanto comerciais**.**
-13. **Listar todos os clientes (PF e PJ) com todos os seus contatos (email, telefone e endereço), mesmo que alguns desses dados estejam ausentes.**
-14. **Exibir a quantidade total de clientes ativos e inativos, separando por tipo (PF e PJ).**
-15. **Para cada cliente, exibir:
+6. Listar o nome e CPF de todas as pessoas físicas ativas.
+7. Listar o nome fantasia e a quantidade de telefones cadastrados por pessoa jurídica.
+8. Exibir o nome (PF ou PJ), o tipo de cliente e a cidade de todos os clientes que possuem endereço.
+9. Exibir o nome e email de todas as pessoas físicas que possuem mais de um email cadastrado.
+10. Listar todos os clientes (PF e PJ) que não possuem nenhum telefone cadastrado.
+
+
+###  Consultas Avançadas (5)
+
+11. Listar o nome (PF ou PJ) de todos os clientes que possuem pelo menos dois telefones e pelo menos um email.
+12. Listar os nomes e cidades dos clientes (PF ou PJ) que têm endereços tanto residenciais quanto comerciais.
+13. Listar todos os clientes (PF e PJ) com todos os seus contatos (email, telefone e endereço), mesmo que alguns desses dados estejam ausentes.
+14. Exibir a quantidade total de clientes ativos e inativos, separando por tipo (PF e PJ).
+15. Para cada cliente, exibir:
     - tipo (PF ou PJ),
     - nome,
     - total de emails,
     - total de telefones,
     - total de endereços.
-    Ordenar pelo total de contatos (soma dos três).**
+    Ordenar pelo total de contatos (soma dos três).
 
