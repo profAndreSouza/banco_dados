@@ -1,4 +1,4 @@
-# Data Definition Language
+# ACE DB
 
 ## DDL
 
@@ -57,70 +57,79 @@ CREATE TABLE email (
 
 ## DML
 
-###  `cliente` (IDs gerados automaticamente)
-
 ```sql
--- Inserção de dois clientes (um PF, um PJ)
-INSERT INTO cliente (ativo) VALUES (TRUE);  -- id = 1
-INSERT INTO cliente (ativo) VALUES (FALSE); -- id = 2
-```
 
-###  `pessoa_fisica`
+-- Limpa os dados e reinicia os IDs
+TRUNCATE TABLE email, telefone, endereco, pessoa_fisica, pessoa_juridica, cliente RESTART IDENTITY CASCADE;
 
-```sql
-INSERT INTO pessoa_fisica (id, nome, cpf, nascimento)
-VALUES (1, 'João da Silva', '123.456.789-00', '1985-06-15');
-```
+-- Inserção de 20 clientes (10 PF + 10 PJ)
+-- Guardar os IDs gerados
+-- PF (1 a 10)
+INSERT INTO cliente (ativo) VALUES
+(TRUE), (TRUE), (FALSE), (TRUE), (TRUE),
+(TRUE), (FALSE), (TRUE), (TRUE), (TRUE);
 
-###  `pessoa_juridica`
+-- PJ (11 a 20)
+INSERT INTO cliente (ativo) VALUES
+(TRUE), (TRUE), (FALSE), (TRUE), (TRUE),
+(TRUE), (FALSE), (TRUE), (TRUE), (TRUE);
 
-```sql
-INSERT INTO pessoa_juridica (id, nome_fantasia, razao_social, cnpj)
-VALUES (2, 'Tech Soluções', 'Tech Soluções Ltda', '11.222.333/0001-44');
-```
+-- Pessoa Física
+INSERT INTO pessoa_fisica (id, nome, cpf, nascimento) VALUES
+(1, 'Ana Paula', '111.111.111-11', '1990-01-10'),
+(2, 'Bruno Silva', '222.222.222-22', '1985-07-21'),
+(3, 'Carla Mendes', '333.333.333-33', '1993-03-05'),
+(4, 'Daniel Costa', '444.444.444-44', '1980-08-09'),
+(5, 'Elaine Souza', '555.555.555-55', '1995-12-25'),
+(6, 'Felipe Rocha', '666.666.666-66', '1992-11-15'),
+(7, 'Gabriela Luz', '777.777.777-77', '1988-02-20'),
+(8, 'Henrique Melo', '888.888.888-88', '1983-04-18'),
+(9, 'Isabela Torres', '999.999.999-99', '1991-09-30'),
+(10, 'João Pedro', '000.000.000-00', '1996-06-12');
 
+-- Pessoa Jurídica
+INSERT INTO pessoa_juridica (id, nome_fantasia, razao_social, cnpj) VALUES
+(11, 'TechMais', 'TechMais Sistemas Ltda', '11.111.111/0001-11'),
+(12, 'AgroVida', 'AgroVida Produtos Naturais Ltda', '22.222.222/0001-22'),
+(13, 'Construfácil', 'Construfácil Engenharia e Obras', '33.333.333/0001-33'),
+(14, 'MoveLar', 'MoveLar Indústria de Móveis', '44.444.444/0001-44'),
+(15, 'PetAmigo', 'PetAmigo Comércio de Produtos Animais', '55.555.555/0001-55'),
+(16, 'EcoLimpo', 'EcoLimpo Limpeza Ambiental Ltda', '66.666.666/0001-66'),
+(17, 'AutoPeças BR', 'AutoPeças Brasil SA', '77.777.777/0001-77'),
+(18, 'SaborCaseiro', 'Sabor Caseiro Alimentos Artesanais', '88.888.888/0001-88'),
+(19, 'VidaSegura', 'Vida Segura Corretora de Seguros', '99.999.999/0001-99'),
+(20, 'ClickNet', 'ClickNet Provedor de Internet Ltda', '00.000.000/0001-00');
 
-###  `pessoa_fisica`
+-- Endereços (clientes variados, múltiplos para alguns)
+INSERT INTO endereco (cliente_id, logradouro, numero, complemento, bairro, cidade, estado, cep, tipo) VALUES
+(1, 'Rua A', '123', NULL, 'Centro', 'São Paulo', 'SP', '01000-000', 'Residencial'),
+(2, 'Av. B', '456', 'Bloco 2', 'Jardim', 'Campinas', 'SP', '13000-000', 'Residencial'),
+(2, 'Av. B', '999', 'Sala 12', 'Industrial', 'Campinas', 'SP', '13000-010', 'Comercial'),
+(11, 'Rua C', '321', NULL, 'Comercial', 'Sorocaba', 'SP', '18000-000', 'Comercial'),
+(14, 'Alameda X', '700', NULL, 'Parque', 'Ribeirão Preto', 'SP', '14000-000', 'Comercial'),
+(14, 'Alameda X', '701', NULL, 'Parque', 'Ribeirão Preto', 'SP', '14000-001', 'Comercial'),
+(20, 'Rua Net', '88', NULL, 'Centro', 'São Paulo', 'SP', '01020-000', 'Comercial');
 
-```sql
--- Cliente 3 será inserido depois para o segundo PF
-INSERT INTO cliente (ativo) VALUES (TRUE);  -- id = 3
-INSERT INTO pessoa_fisica (id, nome, cpf, nascimento)
-VALUES (3, 'Maria Oliveira', '987.654.321-00', '1990-12-01');
-```
-
-###  `pessoa_juridica`
-
-```sql
--- Cliente 4 será inserido para o segundo PJ
-INSERT INTO cliente (ativo) VALUES (TRUE);  -- id = 4
-INSERT INTO pessoa_juridica (id, nome_fantasia, razao_social, cnpj)
-VALUES (4, 'Auto Mec', 'Auto Mecânica Brasil SA', '55.666.777/0001-88');
-```
-
-###  `endereco`
-
-```sql
-INSERT INTO endereco (cliente_id, logradouro, numero, complemento, bairro, cidade, estado, cep, tipo)
-VALUES
-(1, 'Rua das Flores', '123', 'Apto 101', 'Centro', 'São Paulo', 'SP', '01001-000', 'Residencial'),
-(2, 'Av. Industrial', '456', NULL, 'Distrito', 'Campinas', 'SP', '13001-200', 'Comercial');
-```
-
-### `telefone`
-
-```sql
-INSERT INTO telefone (cliente_id, ddd, numero, tipo)
-VALUES
+-- Telefones (alguns com mais de 1)
+INSERT INTO telefone (cliente_id, ddd, numero, tipo) VALUES
 (1, '11', '912345678', 'Movel'),
-(2, '19', '32345678', 'Fixo');
-```
+(1, '11', '32345678', 'Fixo'),
+(2, '19', '99887766', 'Movel'),
+(11, '15', '34567890', 'Fixo'),
+(14, '16', '912340001', 'Movel'),
+(14, '16', '312340001', 'Fixo'),
+(14, '16', '99887755', 'Recado'),
+(20, '11', '911112222', 'Movel');
 
-### `email`
+-- Emails (alguns clientes com mais de 1, outros sem)
+INSERT INTO email (cliente_id, email) VALUES
+(1, 'ana.paula@email.com'),
+(2, 'bruno.silva@email.com'),
+(2, 'b.silva@empresa.com'),
+(11, 'contato@techmais.com.br'),
+(14, 'sac@movelar.com'),
+(14, 'comercial@movelar.com'),
+(20, 'suporte@clicknet.com.br');
 
-```sql
-INSERT INTO email (cliente_id, email)
-VALUES
-(1, 'joao.silva@email.com'),
-(2, 'contato@techsolucoes.com.br');
+
 ```
