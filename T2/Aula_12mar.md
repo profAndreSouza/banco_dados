@@ -1,4 +1,4 @@
-# Data Definition Language
+# Data Definition Language e Data Manipulation Language
 
 ## DDL
 
