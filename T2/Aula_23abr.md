@@ -20,12 +20,16 @@ ORDER BY [campos]
 
 1. Listar todos os clientes pessoa física com seus nomes e CPFs.
 ```sql
-
+SELECT nome, cpf
+FROM pessoa_fisica
+ORDER BY nome;
 ```
 
 2. Exibir o nome fantasia e CNPJ de todas as pessoas jurídicas cadastradas.
 ```sql
-
+SELECT nome_fantasia, cnpj
+FROM pessoa_juridica
+ORDER BY nome_fantasia;
 ```
 
 3. Listar todos os emails cadastrados no sistema.
