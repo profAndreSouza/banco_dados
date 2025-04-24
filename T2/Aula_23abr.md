@@ -41,12 +41,16 @@ FROM email;
 
 4. Exibir todos os endereços do tipo "Residencial", mostrando logradouro, número e cidade.
 ```sql
-
+SELECT logradouro, numero, cidade
+FROM endereco
+WHERE tipo LIKE 'Residencial';
 ```
 
 5. Listar todos os números de telefone do tipo "Movel".
 ```sql
-
+SELECT ddd, numero
+FROM telefone
+WHERE tipo LIKE 'Movel';
 ```
 
 
@@ -55,12 +59,19 @@ FROM email;
 
 6. Listar o nome e CPF de todas as pessoas físicas ativas.
 ```sql
-
+SELECT pf.nome, pf.cpf
+FROM pessoa_fisica pf
+INNER JOIN cliente c ON pf.id = c.id
+WHERE c.ativo = TRUE;
 ```
 
 7. Listar o nome fantasia e a quantidade de telefones cadastrados por pessoa jurídica.
 ```sql
-
+SELECT pj.nome_fantasia, COUNT(t.numero) AS quantidade
+FROM pessoa_juridica pj
+INNER JOIN cliente c ON pj.id = c.id
+LEFT JOIN telefone t ON t.cliente_id = c.id
+GROUP BY pj.nome_fantasia;
 ```
 
 8. Exibir o nome (PF ou PJ), o tipo de cliente e a cidade de todos os clientes que possuem endereço.
