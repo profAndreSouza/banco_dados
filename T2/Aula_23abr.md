@@ -34,6 +34,8 @@ ORDER BY nome_fantasia;
 
 3. Listar todos os emails cadastrados no sistema.
 ```sql
+SELECT email
+FROM email;
 
 ```
 
