@@ -76,7 +76,17 @@ GROUP BY pj.nome_fantasia;
 
 8. Exibir o nome (PF ou PJ), o tipo de cliente e a cidade de todos os clientes que possuem endereço.
 ```sql
-
+SELECT DISTINCT 
+       COALESCE(pessoa_fisica.nome, pessoa_juridica.nome_fantasia) AS nome,
+	   CASE
+	      WHEN pessoa_fisica.id IS NOT NULL THEN 'Pessoa Física'
+		  WHEN pessoa_juridica.id IS NOT NULL THEN 'Pessoa Jurídica'
+	   END AS tipo_cliente,
+	   endereco.cidade
+FROM cliente
+LEFT JOIN pessoa_fisica ON cliente.id = pessoa_fisica.id
+LEFT JOIN pessoa_juridica ON cliente.id = pessoa_juridica.id
+INNER JOIN endereco ON cliente.id = endereco.cliente_id;
 ```
 
 9. Exibir o nome e email de todas as pessoas físicas que possuem mais de um email cadastrado.
